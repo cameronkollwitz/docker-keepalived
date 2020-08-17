@@ -2,13 +2,11 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/cameronkollwitz/keepalived.svg)][hub]
 [![Docker Stars](https://img.shields.io/docker/stars/cameronkollwitz/keepalived.svg)][hub]
-[![](https://images.microbadger.com/badges/image/cameronkollwitz/keepalived.svg)](http://microbadger.com/images/cameronkollwitz/keepalived "Get your own image badge on microbadger.com")
 
 [hub]: https://hub.docker.com/r/cameronkollwitz/keepalived/
 
 Latest release: 2.0.20 - Keepalived 2.0.20 - [Changelog](CHANGELOG.md) | [Docker Hub](https://hub.docker.com/r/cameronkollwitz/keepalived/)
-
-**A docker image to run Keepalived.**
+**A Docker Image to Run Keepalived.**
 
 > [keepalived.org](http://keepalived.org/)
 
