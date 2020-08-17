@@ -12,7 +12,24 @@ Latest release: 2.0.20 - Keepalived 2.0.20 - [Changelog](CHANGELOG.md) | [Docker
 
 > [keepalived.org](http://keepalived.org/)
 
-- [cameronkollwitz/keepalived](#osixiakeepalived) - [Quick start](#quick-start) - [Beginner Guide](#beginner-guide) - [Use your own Keepalived config](#use-your-own-keepalived-config) - [Fix docker mounted file problems](#fix-docker-mounted-file-problems) - [Debug](#debug) - [Environment Variables](#environment-variables) - [Set your own environment variables](#set-your-own-environment-variables) - [Use command line argument](#use-command-line-argument) - [Link environment file](#link-environment-file) - [Make your own image or extend this image](#make-your-own-image-or-extend-this-image) - [Advanced User Guide](#advanced-user-guide) - [Extend cameronkollwitz/keepalived:2.0.20 image](#extend-osixiakeepalived2020-image) - [Make your own keepalived image](#make-your-own-keepalived-image) - [Tests](#tests) - [Under the hood: osixia/light-baseimage](#under-the-hood-osixialight-baseimage) - [Security](#security) - [Changelog](#changelog)
+- [cameronkollwitz/keepalived](#cameronkollwitzkeepalived)
+  - [Quick start](#quick-start)
+  - [Beginner Guide](#beginner-guide)
+    - [Use your own Keepalived config](#use-your-own-keepalived-config)
+    - [Fix docker mounted file problems](#fix-docker-mounted-file-problems)
+    - [Debug](#debug)
+  - [Environment Variables](#environment-variables)
+    - [Set your own environment variables](#set-your-own-environment-variables)
+      - [Use command line argument](#use-command-line-argument)
+      - [Link environment file](#link-environment-file)
+      - [Make your own image or extend this image](#make-your-own-image-or-extend-this-image)
+  - [Advanced User Guide](#advanced-user-guide)
+    - [Extend cameronkollwitz/keepalived:2.0.20 image](#extend-cameronkollwitzkeepalived2020-image)
+    - [Make your own keepalived image](#make-your-own-keepalived-image)
+    - [Tests](#tests)
+    - [Under the hood: osixia/light-baseimage](#under-the-hood-osixialight-baseimage)
+  - [Security](#security)
+  - [Changelog](#changelog)
 
 ## Quick start
 
@@ -39,7 +56,7 @@ You may have some problems with mounted files on some systems. The startup scrip
 
 To fix that run the container with `--copy-service` argument :
 
-    	docker run [your options] cameronkollwitz/keepalived:2.0.20 --copy-service
+    docker run [your options] cameronkollwitz/keepalived:2.0.20 --copy-service
 
 ### Debug
 
@@ -48,11 +65,11 @@ Available levels are: `none`, `error`, `warning`, `info`, `debug` and `trace`.
 
 Example command to run the container in `debug` mode:
 
-    docker run --detach cameronkollwitz/keepalived:2.0.20 --loglevel debug
+docker run --detach cameronkollwitz/keepalived:2.0.20 --loglevel debug
 
 See all command line options:
 
-    docker run cameronkollwitz/keepalived:2.0.20 --help
+docker run cameronkollwitz/keepalived:2.0.20 --help
 
 ## Environment Variables
 
@@ -99,8 +116,8 @@ Environment variables can be set by adding the --env argument in the command lin
 
 For example if your environment file is in : /data/environment/my-env.yaml
 
-    docker run --volume /data/environment/my-env.yaml:/container/environment/01-custom/env.yaml \
-    --detach cameronkollwitz/keepalived:2.0.20
+docker run --volume /data/environment/my-env.yaml:/container/environment/01-custom/env.yaml \
+ --detach cameronkollwitz/keepalived:2.0.20
 
 Take care to link your environment file to `/container/environment/XX-somedir` (with XX < 99 so they will be processed before default environment files) and not directly to `/container/environment` because this directory contains predefined baseimage environment files to fix container environment (INITRD, LANG, LANGUAGE and LC_CTYPE).
 
@@ -127,27 +144,27 @@ Dockerfile example:
 
 Clone this project :
 
-    git clone https://github.com/osixia/docker-keepalived
-    cd docker-keepalived
+git clone https://github.com/osixia/docker-keepalived
+cd docker-keepalived
 
 Adapt Makefile, set your image NAME and VERSION, for example :
 
-    NAME = cameronkollwitz/keepalived
-    VERSION = 1.3.5
+NAME = cameronkollwitz/keepalived
+VERSION = 1.3.5
 
-    becomes :
-    NAME = billy-the-king/keepalived
-    VERSION = 0.1.0
+becomes :
+NAME = billy-the-king/keepalived
+VERSION = 0.1.0
 
 Add your custom scripts, environment files, config ...
 
 Build your image :
 
-    make build
+make build
 
 Run your image :
 
-    docker run -d billy-the-king/keepalived:0.1.0
+docker run -d billy-the-king/keepalived:0.1.0
 
 ### Tests
 
@@ -157,7 +174,7 @@ We use **Bats** (Bash Automated Testing System) to test this image:
 
 Install Bats, and in this project directory run :
 
-    make test
+make test
 
 ### Under the hood: osixia/light-baseimage
 
